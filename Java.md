@@ -1,6 +1,4 @@
-Here is a complete and more detailed version of your Markdown file, including additional points to enhance clarity:
 
-```markdown
 # Java Overview
 
 ## Java Compilation Process
