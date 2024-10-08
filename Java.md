@@ -277,8 +277,4 @@ for (initialization; condition; step) {
   int[] numbers = {1, 2, 3, 4, 5};
   ```
 
----
-
-Feel free to explore more about Java as it offers rich libraries and support for various application developments!
-```
 
