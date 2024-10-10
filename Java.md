@@ -1,4 +1,5 @@
 
+
 # Java Programming Overview
 
 ## Java Compilation Process
@@ -214,3 +215,261 @@ class Main {
   sb.insert(0, "Java");  // Inserts "Java" at the start
   String str = sb.toString();  // Converts StringBuffer to String
   ```
+
+
+## Static Variables and Blocks in Java
+
+- **Static variables** are shared across all instances of a class. These are also referred to as class variables.
+- The `static` keyword is used to define class-level variables and methods.
+- **Static block** can be used for initializing static variables. It runs only once, when the class is loaded:
+  
+  ```java
+  static {
+      // static block
+  }
+  ```
+
+- The static block is executed before any object of the class is created, but it does not run if no object or static method is invoked.
+  
+### Example
+
+```java
+class Details {
+    private String name;
+    private int age;
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+public class Human {
+    public static void main(String[] args) {
+        Details A = new Details();
+        A.setAge(22);
+        A.setName("Anvesh");
+
+        System.out.println(A.getAge());
+        System.out.println(A.getName());
+    }
+}
+```
+
+## Constructors in Java
+
+- **Constructors** initialize an object when it's created.
+- They don’t have a return type and have the same name as the class.
+- Constructors are of two types:
+  - **Default constructor:** No arguments.
+  - **Parameterized constructor:** Takes arguments.
+  
+### Method Overloading in Constructors
+
+Constructors can be overloaded, meaning there can be multiple constructors with different parameter lists.
+
+### `this` and `super` Keywords
+
+- `this` keyword is used to refer to the current instance of the class.
+- `super` keyword is used to call parent class constructors and methods.
+  
+### Example of Constructor Overloading and Inheritance
+
+```java
+class A {
+    public A() {
+        System.out.println("in A");
+    }
+
+    public A(String name) {
+        this();
+        System.out.println(name + " from A(String name)");
+    }
+}
+
+class B extends A {
+    public B() {
+        super("Anvesh");
+        System.out.println("in B");
+    }
+
+    int add(int a, int b) {
+        return a + b;
+    }
+}
+
+public class Inheritance {
+    public static void main(String[] args) {
+        B b = new B();
+        b.add(1, 2);
+    }
+}
+```
+
+## Naming Conventions
+
+- **Camel casing**: 
+  - Class and interface names start with uppercase (e.g., `Student`, `Payment`).
+  - Variables and methods start with lowercase (e.g., `marks`, `show()`).
+  - Constants are fully capitalized (e.g., `PIE`).
+  - When combining multiple words in names, use camelCase (e.g., `showMyMarks()`).
+  
+- **Snake casing**: Use underscores (`_`) to join words, commonly in Python (e.g., `show_my_marks()`).
+
+## Inheritance in Java
+
+- Java supports:
+  - **Single inheritance**
+  - **Multi-level inheritance**
+  - **Hierarchical inheritance**
+- Java doesn’t support multiple inheritance (due to ambiguity problems).
+
+### Examples of Different Types of Inheritance:
+
+- **Single-level inheritance**:
+  ```java
+  class A {
+      // Attributes and methods
+  }
+  
+  class B extends A {
+      // B inherits A’s attributes and methods
+  }
+  ```
+
+- **Multi-level inheritance**:
+  ```java
+  class A {
+      // Attributes and methods
+  }
+  
+  class B extends A {
+      // Inherits A’s methods
+  }
+  
+  class C extends B {
+      // Inherits A and B’s methods
+  }
+  ```
+
+## Method Overloading and Method Overriding
+
+- **Method overloading**: Multiple methods with the same name but different parameters.
+- **Method overriding**: Same method name and parameters in child class, overriding parent class implementation.
+
+## Access Modifiers
+
+Java provides different access levels:
+
+| Modifier   | Same Class | Same Package | Subclass (same pkg) | Subclass (diff pkg) | Everywhere |
+|------------|------------|--------------|---------------------|---------------------|------------|
+| private    | Yes        | No           | No                  | No                  | No         |
+| protected  | Yes        | Yes          | Yes                 | Yes                 | No         |
+| public     | Yes        | Yes          | Yes                 | Yes                 | Yes        |
+| default    | Yes        | Yes          | Yes                 | No                  | No         |
+
+## Polymorphism in Java
+
+Polymorphism allows an object to take many forms:
+
+- **Compile-time (method overloading)**: Same method, different signatures.
+- **Runtime (method overriding)**: Same method, different implementation in child class.
+
+## `final` Keyword
+
+- `final` can be used with variables, methods, and classes.
+- Variables marked `final` cannot be reassigned.
+- Methods marked `final` cannot be overridden.
+- Classes marked `final` cannot be extended.
+
+### Example:
+```java
+final class A {
+    // Class A cannot be extended
+}
+
+class B extends A {
+    // This will cause an error
+}
+```
+
+## Upcasting and Downcasting
+
+- **Upcasting**: Assigning a child object to a parent reference:
+  
+  ```java
+  A obj = new B();
+  ```
+
+- **Downcasting**: Casting a parent object to a child reference:
+  
+  ```java
+  B obj1 = (B) obj;
+  ```
+
+## Wrapper Classes
+
+Java provides wrapper classes for primitive types:
+
+- `int` -> `Integer`
+- `char` -> `Character`
+- `double` -> `Double`
+
+```java
+int num = 7;
+Integer num1 = num;  // Auto-boxing
+int num2 = num1.intValue();  // Auto-unboxing
+```
+
+## Abstract Classes and Interfaces
+
+- **Abstract classes**: Cannot be instantiated, can contain both abstract and non-abstract methods.
+- **Interfaces**: Define method signatures without implementation.
+
+### Example of Interface Implementation
+
+```java
+interface A {
+    void show();
+    void config();
+}
+
+class B implements A {
+    public void show() {
+        System.out.println("show");
+    }
+
+    public void config() {
+        System.out.println("config");
+    }
+}
+```
+
+- A class can implement multiple interfaces, but can only extend one class.
+
+## Inner Classes
+
+Java allows classes within other classes:
+
+```java
+class A {
+    class B {
+        public void config() {
+            System.out.println("in config");
+        }
+    }
+}
+```
+
+- **Static inner classes** are also possible.
