@@ -1,5 +1,4 @@
 
-
 # Java Programming Overview
 
 ## Java Compilation Process
@@ -7,168 +6,165 @@
 - **Java code (.java)** -> **Compiler** -> **Byte code (.class)**
 - **Byte code (.class)** -> **JVM (Java Virtual Machine)** -> **Execution and Output**
 - JVM searches for the method: `public static void main(String[] args)` for execution.
-- **JVM is platform-dependent**, meaning the JVM implementation may vary across platforms.
+- **JVM is platform-dependent**, meaning the JVM implementation may vary across platforms, but bytecode is platform-independent.
 - **JDK (Java Development Kit)** contains:
   - JRE (Java Runtime Environment)
     - **JRE** contains:
       - **JVM**
-      - **Libraries**
+      - **Libraries** and class libraries (runtime classes)
+  - **Development tools**: Compilers, debuggers, etc.
 - **WORA**: Write Once, Run Anywhere — Java code can be run on any platform with a compatible JVM.
 
 ## Java: Strongly Typed Language
 
 - In Java, the **type of variable** (like `int`, `String`, etc.) must be declared explicitly.
-- Data types in Java are divided into two categories:
-  - **Primitive Data Types**
-    - Integer types:
-      - `int` -> 4 bytes
-      - `long` -> 8 bytes (e.g., `long l = 14235234L;`)
-      - `short` -> 2 bytes
-      - `byte` -> 1 byte (Range: `-128` to `127`)
-    - Floating-point types:
-      - `float` -> 4 bytes (e.g., `float num = 5.6f;`)
-      - `double` -> 8 bytes (e.g., `double num = 5.6;`)
-    - Character type:
-      - `char` -> 2 bytes (e.g., `char c = 'k';`)
-    - Boolean type:
-      - `boolean` -> `true` or `false` (e.g., `boolean b = true;`)
-  - **Literal Examples**:
-    - `int b = 0b0101;` (binary literal)
-    - `int h = 0x22;` (hexadecimal literal)
-    - `int u = 10_00_00_00_000;` (underscore for readability)
-    - `float e = 12e10;` (exponential notation)
+- Java supports 8 **primitive data types**:
+  - **Integer types**:
+    - `int` -> 4 bytes
+    - `long` -> 8 bytes (e.g., `long l = 14235234L;`)
+    - `short` -> 2 bytes
+    - `byte` -> 1 byte (Range: `-128` to `127`)
+  - **Floating-point types**:
+    - `float` -> 4 bytes (e.g., `float num = 5.6f;`)
+    - `double` -> 8 bytes (e.g., `double num = 5.6;`)
+  - **Character type**:
+    - `char` -> 2 bytes (supports Unicode characters)
+  - **Boolean type**:
+    - `boolean` -> 1 bit (`true` or `false`)
+- **Wrapper classes** for primitive types:
+  - `int` -> `Integer`
+  - `char` -> `Character`
+  - `double` -> `Double`
+  - `boolean` -> `Boolean`
+
+### Literal Examples
+- `int b = 0b0101;` (binary literal)
+- `int h = 0x22;` (hexadecimal literal)
+- `int u = 10_00_00_00_000;` (underscore for readability)
+- `float e = 12e10;` (exponential notation)
 
 ## Type Casting and Conversion
 
-- **Explicit Conversion** (manual):
+- **Implicit Conversion**: Java automatically promotes smaller data types to larger ones (e.g., `byte` to `int`).
+  
   ```java
-  byte b = 127;
-  int a = 12;
-  b = (byte) a;  // Type casting
+  byte b = 10;
+  int a = b;  // Implicit casting
   ```
-  - Example with float:
-    ```java
-    float f = 4.5f;
-    int x = (int) f;  // Explicit casting
-    ```
-  - Without casting:
-    ```java
-    int c = 12;
-    byte k = c;  // Error, needs casting
-    byte k = (byte) c;  // Correct with casting
-    ```
 
-- **Type Promotion**: When operating on smaller types (e.g., `byte`, `short`), Java promotes them to `int` before performing calculations.
+- **Explicit Conversion**: Manual conversion from a larger type to a smaller one, or incompatible types.
+  
+  ```java
+  byte b = (byte) a;  // Casting required
+  ```
+
+- **Type Promotion**: Smaller types (`byte`, `short`) are promoted to `int` before operations.
+  
   ```java
   byte a = 10;
   byte b = 40;
-  int res = a * b;  // Result promoted to int
+  int res = a * b;  // Promoted to int
   ```
 
 ## Arithmetic and Increment Operations
 
-- **Quotient and Remainder**:
+- **Arithmetic operators**: `+`, `-`, `*`, `/`, `%`
+  
   ```java
-  int num1 = a / b;  // Quotient
-  int num2 = a % b;  // Remainder
-  ```
-- **Increment and Decrement**:
-  ```java
-  num1 += 2;  // Addition
-  num1 -= 2;  // Subtraction
-  num1 *= 2;  // Multiplication
+  int quotient = a / b;
+  int remainder = a % b;
   ```
 
-- **Post-increment and Pre-increment**:
-  ```java
-  num++;  // Post-increment
-  ++num;  // Pre-increment
-  ```
+- **Increment/Decrement operators**: `++`, `--`
+  - **Post-increment**: `num++` (use then increment)
+  - **Pre-increment**: `++num` (increment then use)
+
+- **Compound assignments**: `+=`, `-=`, `*=`, `/=`
 
 ## Comparison and Logical Operators
 
-- **Comparison Operators**: `>`, `<`, `>=`, `<=`, `==`, `!=`
-- **Logical Operators**: `&&`, `||`, `!`
+- **Comparison operators**: `>`, `<`, `>=`, `<=`, `==`, `!=`
+- **Logical operators**: `&&` (AND), `||` (OR), `!` (NOT)
 
 ## Conditional Statements
 
 - **If, If-Else, Switch**:
+
   ```java
   if (condition) {
       // If block
-  }
-
-  if (condition) {
-      // If block
+  } else if (anotherCondition) {
+      // Else if block
   } else {
       // Else block
   }
+  ```
 
-  if (condition) {
-      // If block
-  } else if (condition) {
-      // Else If block
-  } else {
-      // Else block
-  }
-
+- **Switch statement**:
+  - Can use `int`, `char`, `String` (since Java 7), and `enum` types.
+  
+  ```java
   switch (n) {
       case 1:
-          // Case 1
-          break;
-      case 2:
-          // Case 2
+          // Do something
           break;
       default:
           // Default case
-          break;
   }
   ```
 
 ## Looping Statements
 
-- **While, Do-While, For loops**:
+- **For loop**: Traditional or enhanced `for-each` loop.
+  
+  ```java
+  for (int i = 0; i < n; i++) {
+      // Loop body
+  }
+
+  // Enhanced for loop
+  for (int element : array) {
+      // Loop body
+  }
+  ```
+
+- **While loop**: Checks condition before entering loop.
+  
   ```java
   while (condition) {
-      // While block
+      // Loop body
   }
+  ```
 
+- **Do-While loop**: Executes at least once before checking condition.
+  
+  ```java
   do {
-      // Do-While block
+      // Loop body
   } while (condition);
-
-  for (start; condition; step) {
-      // For block
-  }
   ```
 
 ## Object-Oriented Programming (OOP) Concepts
 
-- **What is a Class?**: A blueprint for creating objects. It contains data (fields) and methods.
-- **What is an Object?**: An instance of a class.
+- **Class**: Blueprint for creating objects, containing fields and methods.
+- **Object**: An instance of a class.
 
 ### Creating an Object:
 ```java
-classname reference_obj_name = new classname();
+Classname obj = new Classname();
 ```
 
-### Example:
+- **Fields (Instance variables)**: Hold data specific to each object.
+- **Methods**: Define behaviors.
+
+### Example of a Class with Methods and Fields
 ```java
 class Hello {
-    int a;  // Instance variable
-    static int b;  // Static variable or class variable
+    int a;
+    static int b;
 
     int add(int a, int b) {
-        // Local variables for add method
         return a + b;
-    }
-}
-
-class Main {
-    public static void main(String[] args) {
-        Hello obj = new Hello();  // Reference variable
-        int result = obj.add(3, 5);
-        System.out.println(result);
     }
 }
 ```
@@ -177,423 +173,140 @@ class Main {
 
 - **1D Arrays**:
   ```java
-  int nums[] = {4, 5, 6};
-  int nums1[] = new int[5];
+  int[] arr = {1, 2, 3};
   ```
 
 - **2D Arrays**:
   ```java
-  int nums2[][] = new int[3][3];
-
-  // Nested enhanced for loop
-  for (int[] row : nums2) {
-      for (int elem : row) {
-          System.out.print(elem + " ");
-      }
-      System.out.println();
-  }
+  int[][] arr2D = new int[3][3];
   ```
+
+### Enhanced For Loop:
+```java
+for (int[] row : arr2D) {
+    for (int elem : row) {
+        System.out.print(elem + " ");
+    }
+    System.out.println();
+}
+```
 
 ## Strings in Java
 
-- **Immutable Strings**:
-  ```java
-  String s1 = new String("Anvesh");
-  String s2 = new String("Bunny");
-  ```
-
-  - `s1.concat(s2);` // Concatenation
-  - `s1.charAt(3);` // Get character at index 3
-
-  Immutable strings mean that changes to the value result in a new object being created.
-
-- **Mutable Strings** using `StringBuffer`:
-  ```java
-  StringBuffer sb = new StringBuffer("Anvesh");
-  sb.append("Bunny");  // Appends "Bunny" to the existing string
-  sb.deleteCharAt(2);  // Deletes the character at index 2
-  sb.insert(0, "Java");  // Inserts "Java" at the start
-  String str = sb.toString();  // Converts StringBuffer to String
-  ```
-
-
-## Static Variables and Blocks in Java
-
-- **Static variables** are shared across all instances of a class. These are also referred to as class variables.
-- The `static` keyword is used to define class-level variables and methods.
-- **Static block** can be used for initializing static variables. It runs only once, when the class is loaded:
+- **Immutable Strings**: Once created, strings cannot be modified.
   
+  ```java
+  String s = "Hello";
+  String t = s.concat(" World");  // Creates new String
+  ```
+
+- **Mutable Strings** using `StringBuffer` or `StringBuilder`:
+  
+  ```java
+  StringBuffer sb = new StringBuffer("Java");
+  sb.append(" Programming");
+  ```
+
+- **String methods**:
+  - `length()`: Returns length of the string.
+  - `charAt()`: Retrieves a character at a specified index.
+  - `equals()`: Compares two strings.
+
+## Static Variables and Blocks
+
+- **Static variables** are class-level, shared by all instances.
+- **Static block** runs once when the class is loaded:
+
   ```java
   static {
-      // static block
+      // Initialization code
   }
   ```
-
-- The static block is executed before any object of the class is created, but it does not run if no object or static method is invoked.
-  
-### Example
-
-```java
-class Details {
-    private String name;
-    private int age;
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
-
-public class Human {
-    public static void main(String[] args) {
-        Details A = new Details();
-        A.setAge(22);
-        A.setName("Anvesh");
-
-        System.out.println(A.getAge());
-        System.out.println(A.getName());
-    }
-}
-```
 
 ## Constructors in Java
 
-- **Constructors** initialize an object when it's created.
-- They don’t have a return type and have the same name as the class.
-- Constructors are of two types:
-  - **Default constructor:** No arguments.
-  - **Parameterized constructor:** Takes arguments.
+- **Constructor** initializes objects and does not return a value.
   
-### Method Overloading in Constructors
+  ```java
+  public class Car {
+      String model;
 
-Constructors can be overloaded, meaning there can be multiple constructors with different parameter lists.
+      public Car(String model) {
+          this.model = model;
+      }
+  }
+  ```
 
-### `this` and `super` Keywords
-
-- `this` keyword is used to refer to the current instance of the class.
-- `super` keyword is used to call parent class constructors and methods.
+- **Constructor Overloading**: Multiple constructors with different parameter types.
   
-### Example of Constructor Overloading and Inheritance
-
-```java
-class A {
-    public A() {
-        System.out.println("in A");
-    }
-
-    public A(String name) {
-        this();
-        System.out.println(name + " from A(String name)");
-    }
-}
-
-class B extends A {
-    public B() {
-        super("Anvesh");
-        System.out.println("in B");
-    }
-
-    int add(int a, int b) {
-        return a + b;
-    }
-}
-
-public class Inheritance {
-    public static void main(String[] args) {
-        B b = new B();
-        b.add(1, 2);
-    }
-}
-```
-
-## Naming Conventions
-
-- **Camel casing**: 
-  - Class and interface names start with uppercase (e.g., `Student`, `Payment`).
-  - Variables and methods start with lowercase (e.g., `marks`, `show()`).
-  - Constants are fully capitalized (e.g., `PIE`).
-  - When combining multiple words in names, use camelCase (e.g., `showMyMarks()`).
-  
-- **Snake casing**: Use underscores (`_`) to join words, commonly in Python (e.g., `show_my_marks()`).
+  ```java
+  Car(String model) {...}
+  Car(String model, int year) {...}
+  ```
 
 ## Inheritance in Java
 
-- Java supports:
-  - **Single inheritance**
-  - **Multi-level inheritance**
-  - **Hierarchical inheritance**
-- Java doesn’t support multiple inheritance (due to ambiguity problems).
-
-### Examples of Different Types of Inheritance:
-
-- **Single-level inheritance**:
-  ```java
-  class A {
-      // Attributes and methods
-  }
-  
-  class B extends A {
-      // B inherits A’s attributes and methods
-  }
-  ```
-
-- **Multi-level inheritance**:
-  ```java
-  class A {
-      // Attributes and methods
-  }
-  
-  class B extends A {
-      // Inherits A’s methods
-  }
-  
-  class C extends B {
-      // Inherits A and B’s methods
-  }
-  ```
-
-## Method Overloading and Method Overriding
-
-- **Method overloading**: Multiple methods with the same name but different parameters.
-- **Method overriding**: Same method name and parameters in child class, overriding parent class implementation.
-
-## Access Modifiers
-
-Java provides different access levels:
-
-| Modifier   | Same Class | Same Package | Subclass (same pkg) | Subclass (diff pkg) | Everywhere |
-|------------|------------|--------------|---------------------|---------------------|------------|
-| private    | Yes        | No           | No                  | No                  | No         |
-| protected  | Yes        | Yes          | Yes                 | Yes                 | No         |
-| public     | Yes        | Yes          | Yes                 | Yes                 | Yes        |
-| default    | Yes        | Yes          | Yes                 | No                  | No         |
-
-## Polymorphism in Java
-
-Polymorphism allows an object to take many forms:
-
-- **Compile-time (method overloading)**: Same method, different signatures.
-- **Runtime (method overriding)**: Same method, different implementation in child class.
-
-## `final` Keyword
-
-- `final` can be used with variables, methods, and classes.
-- Variables marked `final` cannot be reassigned.
-- Methods marked `final` cannot be overridden.
-- Classes marked `final` cannot be extended.
-
-### Example:
-```java
-final class A {
-    // Class A cannot be extended
-}
-
-class B extends A {
-    // This will cause an error
-}
-```
-
-## Upcasting and Downcasting
-
-- **Upcasting**: Assigning a child object to a parent reference:
+- **Single, multi-level, and hierarchical inheritance**.
+- Use the `extends` keyword for inheritance.
   
   ```java
-  A obj = new B();
+  class Car {}
+  class Tesla extends Car {}
   ```
 
-- **Downcasting**: Casting a parent object to a child reference:
+- **Overriding**: Child class redefines a method from the parent class.
+
+## Polymorphism
+
+- **Compile-time Polymorphism** (Method Overloading): Same method name, different signatures.
   
   ```java
-  B obj1 = (B) obj;
+  void display(int a) {...}
+  void display(double a) {...}
   ```
 
-## Wrapper Classes
-
-Java provides wrapper classes for primitive types:
-
-- `int` -> `Integer`
-- `char` -> `Character`
-- `double` -> `Double`
-
-```java
-int num = 7;
-Integer num1 = num;  // Auto-boxing
-int num2 = num1.intValue();  // Auto-unboxing
-```
+- **Runtime Polymorphism** (Method Overriding): Same method, different implementations in parent and child classes.
 
 ## Abstract Classes and Interfaces
 
-- **Abstract classes**: Cannot be instantiated, can contain both abstract and non-abstract methods.
-- **Interfaces**: Define method signatures without implementation.
+- **Abstract class**: Contains abstract (no body) and non-abstract methods.
+- **Interface**: All methods are abstract (unless they are default or static methods).
+  
+  ```java
+  interface Vehicle {
+      void start();
+  }
+  ```
 
-### Example of Interface Implementation
+## Exception Handling
 
-```java
-interface A {
-    void show();
-    void config();
-}
+- **Try-Catch-Finally** block for handling exceptions:
 
-class B implements A {
-    public void show() {
-        System.out.println("show");
-    }
+  ```java
+  try {
+      // Code that might throw an exception
+  } catch (Exception e) {
+      // Handle exception
+  } finally {
+      // Optional finally block
+  }
+  ```
 
-    public void config() {
-        System.out.println("config");
-    }
-}
-```
+- **throw** is used to manually throw an exception.
 
-- A class can implement multiple interfaces, but can only extend one class.
+- **Custom exceptions** can be created by extending `Exception`.
 
-## Inner Classes
+## Threads in Java
 
-Java allows classes within other classes:
+- **Extending `Thread` class** or **Implementing `Runnable` interface** for multithreading.
+  
+  ```java
+  class MyThread extends Thread {
+      public void run() {
+          // Code for thread
+      }
+  }
+  ```
 
-```java
-class A {
-    class B {
-        public void config() {
-            System.out.println("in config");
-        }
-    }
-}
-```
+- **Thread Priority**, **Synchronization**, and **Inter-thread communication** are important concepts for thread management.
 
-- **Static inner classes** are also possible.
-
-
-Errors:
-
-1. Compile Time Error (Syntactical error)
-2. Runtime Error (e.g., 3/0, Exception Handling)
-3. Logical Error 
-
-Exception Handling:
-
-- **try-catch** block for handling exceptions:
-
-```java
-int i, j, z;
-i = 30;
-j = 0;
-
-try {
-   z = i / j; 
-} catch (Exception e) {
-    System.out.println("Something went wrong: " + e);
-}
-```
-
-- Example of multiple catch blocks and accessing array:
-
-```java
-int i, j, z;
-i = 30;
-j = 0;
-
-int nums[] = new int[5];
-
-try {
-    z = i / j; 
-    System.out.println(nums[1]);
-    System.out.println(nums[6]); // Out of bounds access
-} catch (ArithmeticException e) {
-    System.out.println("Division by zero: " + e);
-} catch (ArrayIndexOutOfBoundsException e) {
-    System.out.println("Be in your limits: " + e);
-} catch (Exception e) {
-    System.out.println("Something went wrong: " + e);
-}
-```
-
-- **Exception** is the parent class for all exceptions.
-
-- **throw** is used to throw an exception manually:
-
-```java
-int i, j, z;
-i = 30;
-j = 0;
-
-try {
-    if (j == 0)
-        throw new ArithmeticException("Division by zero not possible");
-    z = i / j; 
-} catch (Exception e) {
-    System.out.println("Something went wrong: " + e);
-} finally {
-    // Optional finally block
-}
-```
-
-- You can create custom exceptions as well.
-
-Scanner Class:
-
-- To take input from the user:
-
-```java
-Scanner sc = new Scanner(System.in);
-int num = sc.nextInt(); // To read integer input
-// Similarly, for other data types.
-```
-
-Threading in Java:
-
-- You can run multiple threads simultaneously.
-
-- Every thread class needs a `run` method to start execution:
-
-```java
-public class ThreadsJava {
-    public static void main(String[] args) {
-        A a = new A();
-        B b = new B();
-
-        // Setting thread priority (default is 5)
-        a.setPriority(9);
-
-        a.start();
-        b.start();
-    }
-}
-
-class A extends Thread {
-    public void run() {
-        for (int i = 0; i < 100; i++)
-            System.out.print("A");
-    } 
-}
-
-class B extends Thread {
-    public void run() {
-        for (int i = 0; i < 500; i++)
-            System.out.print("B");
-    } 
-}
-```
-
-- You can make a thread sleep using `Thread.sleep(100)` for 100 milliseconds:
-
-```java
-try {
-    Thread.sleep(100);
-} catch (InterruptedException e) {
-    // Handle exception
-}
-```
-
-- **Runnable Interface**: Another way to create threads.
