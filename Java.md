@@ -473,3 +473,127 @@ class A {
 ```
 
 - **Static inner classes** are also possible.
+
+
+Errors:
+
+1. Compile Time Error (Syntactical error)
+2. Runtime Error (e.g., 3/0, Exception Handling)
+3. Logical Error 
+
+Exception Handling:
+
+- **try-catch** block for handling exceptions:
+
+```java
+int i, j, z;
+i = 30;
+j = 0;
+
+try {
+   z = i / j; 
+} catch (Exception e) {
+    System.out.println("Something went wrong: " + e);
+}
+```
+
+- Example of multiple catch blocks and accessing array:
+
+```java
+int i, j, z;
+i = 30;
+j = 0;
+
+int nums[] = new int[5];
+
+try {
+    z = i / j; 
+    System.out.println(nums[1]);
+    System.out.println(nums[6]); // Out of bounds access
+} catch (ArithmeticException e) {
+    System.out.println("Division by zero: " + e);
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Be in your limits: " + e);
+} catch (Exception e) {
+    System.out.println("Something went wrong: " + e);
+}
+```
+
+- **Exception** is the parent class for all exceptions.
+
+- **throw** is used to throw an exception manually:
+
+```java
+int i, j, z;
+i = 30;
+j = 0;
+
+try {
+    if (j == 0)
+        throw new ArithmeticException("Division by zero not possible");
+    z = i / j; 
+} catch (Exception e) {
+    System.out.println("Something went wrong: " + e);
+} finally {
+    // Optional finally block
+}
+```
+
+- You can create custom exceptions as well.
+
+Scanner Class:
+
+- To take input from the user:
+
+```java
+Scanner sc = new Scanner(System.in);
+int num = sc.nextInt(); // To read integer input
+// Similarly, for other data types.
+```
+
+Threading in Java:
+
+- You can run multiple threads simultaneously.
+
+- Every thread class needs a `run` method to start execution:
+
+```java
+public class ThreadsJava {
+    public static void main(String[] args) {
+        A a = new A();
+        B b = new B();
+
+        // Setting thread priority (default is 5)
+        a.setPriority(9);
+
+        a.start();
+        b.start();
+    }
+}
+
+class A extends Thread {
+    public void run() {
+        for (int i = 0; i < 100; i++)
+            System.out.print("A");
+    } 
+}
+
+class B extends Thread {
+    public void run() {
+        for (int i = 0; i < 500; i++)
+            System.out.print("B");
+    } 
+}
+```
+
+- You can make a thread sleep using `Thread.sleep(100)` for 100 milliseconds:
+
+```java
+try {
+    Thread.sleep(100);
+} catch (InterruptedException e) {
+    // Handle exception
+}
+```
+
+- **Runnable Interface**: Another way to create threads.
