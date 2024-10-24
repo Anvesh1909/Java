@@ -1,0 +1,136 @@
+java code(.java) -> compiler = Byte code (.class)
+Byte code -> JVM = output 
+
+JVM serches public static void main(String a[]) for execution
+
+JVM is platform dependent 
+
+JDK contains JRE contains JVM 
+java follows WORA(write once run anywhere)
+
+JRE contains libraries and JVM
+
+strongly typed language that means we need to specify the type of container which we are storing like int,string etc.
+
+data types in java 
+primitive -> int,float,char,boolean
+
+integer-> int-> 4 bytes 
+        long-> 8 bytes long l = 14235234l;
+        short -> 2 bytes 
+        byte -> 1 byte -> -2^7 to 2^7-1
+
+float -> float ->4 bytes  float num = 5.6f;
+        double -> 8 bytes   double num = 5.6;
+
+char -> 2 bytes 
+    char c = 'k';
+
+boolean -> true and false 
+    boolean b = true;
+
+int b = 0b0101;
+int h = 0x22h;
+int u = 10_00_00_00_000;
+
+float e = 12e10;
+
+c++ to change the literal to the next alphabet in assci numbers 
+
+Type casting and conversion 
+
+explicite conversion
+
+byte b = 127;
+int a = 12;
+
+b = (byte)a;
+
+float f = 4.5f;
+int x = (int)f;
+
+int c = 12;
+byte k = c;// error 
+byte k = (byte)c; //correct assignment
+
+type promotion 
+byte a = 10;
+byte b = 40;
+int res = a*b;
+
+to get questiont 
+int num1 = a/b;
+to get reminder 
+int num2 = a%b;
+to increment 
+num1 += 2
+num1 -= 2
+num1 *= 2
+
+post increment
+num++
+
+pre increment 
+++num
+
+comparition operators 
+>,<, >=,<= , == , != 
+
+logical operators
+&&, ||, !
+
+conditional statements 
+if , if else , if else if , switch
+
+if(conditon){
+        if block
+}
+
+if(conditon){
+        if block
+}
+else{
+        else block
+}
+
+if(conditon){
+        if block
+}
+else if(conditon){
+        if else block
+}
+else{
+        else block
+}
+
+
+switch(n){
+        case 1:
+                case 1
+                break;
+        case 2:
+                case 2
+                break;
+        case 3:
+                case 3
+                break;
+        default:
+                break;
+}
+
+
+looping statement 
+
+while, do while, for
+
+while(condition){
+        while block
+}
+
+do{
+        do while block
+}while(conditon);
+
+for(start;conditionl;step){
+        for block
+}

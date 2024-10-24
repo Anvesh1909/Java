@@ -1,0 +1,544 @@
+Oops 
+
+what is a class
+what is an object
+
+how to create a object 
+classname referace_obj_name = new classname();
+
+class Hello{
+
+    int a;// instance variable
+
+    static int b; //static variable or class variable
+
+    int add(int a, int b){
+        //local variable for add method
+        return a+b;
+    }
+}
+
+class Main{
+    public static void main(String[] args) {
+        
+        //referace variable    
+        A a1 = new A();
+        res = a1.add(3, 5);
+        System.err.println(res);
+
+    }
+}
+
+
+Arrays 
+
+int nums[] = {4,5,6};
+int nums1[] = new int[5];
+
+int nums2[][] = new int[3][3];
+
+
+enhanced for loop 
+for(int i : list){
+    sop(i);
+}
+
+for (int[] is : nums2) {
+            for (int js : is) {
+                System.out.print(js);
+            }
+            System.out.println();
+        }
+
+
+Strings in java
+
+String s1 = new String("Anvesh");
+String s2 = new String("Bunny");
+
+string has only concatination operator(+)
+
+s1.charAt(3);
+s1.concat(s2);
+
+or
+immutable String
+String A = "Anvesh";
+String is constent here not variable when i change the literal(value) it will create in new address
+
+if i create a new string B having literal Anvesh then A and B will point to same address
+
+if i create a object using String class it will create a new object for A and b
+
+mutable string 
+StringBuffer sb = new StringBuffer("Anvesh");
+
+sb.append("Bunny");
+
+String str = sb.toString();
+
+sb.deleteCharAt(2);
+
+sb.insert(0,"Java");
+
+sb.subString(1,5);
+
+
+static variable are shared by objects 
+
+static keyword is used to make that a class member 
+
+we can write a staic block to initialize static members 
+static {
+    //static block
+}
+
+static block executes only once 
+constructer will executes after the static block
+
+if we dont create an object static block will not executes 
+
+
+class Details{
+    private String name;
+    private int age;
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
+}
+
+public class Human {
+    public static void main(String[] args) {
+        Details A = new Details();
+        A.setAge(22);
+        A.setName("Anvesh");
+
+        System.out.println(A.getAge());
+        System.out.println(A.getName());
+
+    }
+}
+
+how to use getters and setters 
+
+this is a key word to refer the current object
+  
+Constructors 
+
+it does not have any return type 
+in java constructor name have classname 
+
+constructor will be call once object is created 
+
+it is of 2 types
+default constructor 
+parameterized constructor
+
+constructor is used to initialize values
+
+constructers are also special methods  so it supports method overloading
+
+this and super keyword
+
+first parent class will execute and then child class will be executedd
+all members of parent class also have in child class 
+
+
+
+class A{
+    public A(){
+        System.out.println("in A");
+    }
+
+    public A(String name){
+        // to execute this constructer of same class
+        this();
+        System.out.println(name+"from A(String name)");
+    }
+}
+
+class B extends A{
+    public B(){
+        //to call parameterized parent constructer
+        super("anvesh");
+        System.out.println("in B");
+    }
+
+    int add(int a,int b){
+        return a+b;
+    }
+}
+ 
+
+public class Inheritence {
+    public static void main(String[] args) {
+        B b = new B();
+        b.add(1,2);
+    }    
+}
+
+
+Camel casing
+
+class and interface name should start with uppercase Student,Payment
+variable and method should start with lowercase marks,show()
+constents should be captalized ex PIE
+
+when we conbine two or more words we use camel caseing 
+second letter start with upper case ex showMyMarks()
+
+snake casing which means using underscors(_) to join words
+show_my_marks()
+
+Inheritence 
+java supports 
+single Inheritence, multi-level Inheritence, hiracial Inheritence
+java doesnot supports multiple Inheritence
+
+
+single level inhereitence
+class A{
+    attributes and methods
+}
+class B extends A{
+    B has attributes and methods A and B
+}
+
+multi-level inhereitence
+class A{
+    attributes and methods
+}
+class B extends A{
+    B has attributes and methods of A and B
+}
+class C extends B{
+    C has attributes and methods of A,B and C
+}
+
+class A{
+    attributes and methods
+}
+class B extends A{
+    B has attributes and methods of A and B
+}
+class C extends A{
+    C has attributes and methods of A and C
+}
+
+java does not supports multiple inhereitence because of ambigutiy problem 
+
+
+method overloading
+which means having same name but diffrent parameters
+method overriding 
+having same name and same parameters
+it can be possible using Inheritence
+
+packages 
+
+packages is like a file structers folders and class or java as files organised in folders 
+
+we can import packeges class using import keyword
+
+package calc.advclac;
+
+to import advclac
+
+import calc.advclac.*;
+
+
+
+public can be accessed thoughout the project
+private only can be used only inside the class
+class cannot be private only attributes and methods can be private
+
+if we not specify any access modifier then it is defalult which can be accessed in same package it is also called as package private
+protected access modifier can be accessed only through iunheritence 
+class cannot be protected only attributes and methods can be protected 
+
+
+                private     protected   public default 
+
+same class       yes        yes         yes     yes
+
+same package    No          Yes         yes     yes
+subclass
+
+same package       No         yes         yes       yes
+non-subclass
+
+diffrent package   No       yes         yes         no
+subclass
+
+diffrent package    No      no          yes          no 
+non subclass
+
+
+polymorphisum
+
+poly means many
+morphism meand forms or behaviour
+
+method overloading and method overriding
+
+
+child class members overides the parent class members 
+
+
+
+
+Final 
+it can be used to variable, method , class
+
+it is used to make constents 
+
+final int num = 8;
+in js we use const to do same thing const a=7;
+
+it cant be changed after assigning the value 
+
+if i mention final before class it cant be inherit
+no one can extend that final class 
+
+if i mention final before method than it cant be overrided by the child class
+
+upcasting 
+
+which means creating a parent object and calling child constructor
+A obj = new B();
+
+downcasting
+B obj1 = (B) obj;
+
+Wrapper classes 
+int -> Integer 
+char -> Character 
+double -> Double 
+
+int num = 7;
+Integer num1 = num; //auto bocking
+
+int num2 = num1.intValue(); // auto unboxing
+
+System.out.println(num2);
+
+String str = "123";
+int i = Integer.parseInt(str);
+
+Abstract
+
+when we declare a method but not the implementation it is called abstract method 
+
+abstract class Car{
+    public adstract void drive();
+}
+
+class Indica extends Car{
+    public void drive(){
+        implementation
+    }
+}
+
+we cannot create a object of abstract class 
+but we can create a reference of abstract class
+
+Car obj = new Indica();
+
+abstract class can have abstract methods as well as the non abstract methods 
+
+class inside a class 
+
+class A{
+
+    int age;
+
+    void show(){
+        System.out.println("in show");
+    }
+
+    class B{
+        public void config(){
+            System.out.println("in config")
+        }
+    }
+}
+
+public class Demo{
+    p s v m(s[] a){
+        A obj = new A();
+        obj.show();
+        A.B obj1 = obj.new B();
+        obj.config();
+    }
+}
+
+inner class can be static
+outer class cannot be static 
+
+abstract class with only having abstract methods 
+can be changed to interfaces 
+interface and be implemented using implements keyword
+
+interface only show design implementation is done be diffrent class
+interface A{
+
+    //by default attributes are final and static
+    int age=10;
+    String area = "hyderabad";
+
+    void show();
+    void config();
+}
+
+class B implements A{
+    public void show(){
+        System.out.println("show");
+    }
+    public void config(){
+        System.out.println("config");
+    }
+}
+
+public class Demo{
+    public static void main(String[] args){
+        A obj;
+        obj = new B();
+    }
+}
+
+a class can implements multiple interfaces
+
+interface and extends another interface 
+
+class - class -> extends 
+class - interface -> implements
+interface - interface -> extends 
+
+
+Errors
+
+compile time error (Syntatical error)
+runtime error (3/0 Exeption handline)
+logical error 
+
+Exeption handline
+
+try catch
+
+int i,j,z;
+i = 30;
+j = 0;
+
+try{
+   z = i/j; 
+}
+catch(Exception e){
+    System.out.println("somthing went wrong" + e);
+}
+
+
+int i,j,z;
+i = 30;
+j = 0;
+
+int nums[] = new int[5];
+
+try{
+   z = i/j; 
+    System.out.println(nums[1]);
+    System.out.println(nums[6]);
+}
+catch(ArthemeticException e){
+    System.out.println("division by zero" + e);
+}
+catch(ArrayIndexOutofBoundsExeception e){
+    System.out.println("be in your limits" + e);
+}
+catch(Exception e){
+    System.out.println("somthing went wrong" + e);
+}
+
+Eception is the parent class for all exception which can handle all the exception
+
+throw is used to throw the exception
+
+int i,j,z;
+i = 30;
+j = 0;
+
+try{
+    if(j==0)
+        throw new ArthemeticException("division by zerp not possible");
+   z = i/j; 
+}
+catch(Exception e){
+    System.out.println("somthing went wrong" + e);
+}
+finally{
+    block
+}
+we can also create an exception
+
+Scanner class
+
+Scanner sc = new Scanner(System.in);
+int num = sc.nextInt(); // to read integer
+and all the data types 
+
+threading in java
+
+we can run multiple threads simultanuously
+
+every thread class need to have a run method to start execution 
+public class ThreadsJava {
+    public static void main(String[] args){
+        A a = new A();
+        B b = new B();
+
+        // 5 is the default priority
+        a.getPriority()
+        a.setPriority(9);
+
+        a.start();
+        b.start();
+    }
+}
+
+
+class A extends Thread{
+    public void run(){
+        for(int i = 0; i<100 ; i++)
+        System.out.print("A");
+    } 
+}
+
+class B extends Thread{
+    public void run(){
+        for(int i = 0; i<500 ; i++)
+        System.out.print("B");
+    } 
+}
+
+we can also sleep the thread using 
+
+try{
+    Thread.sleep(100)
+}
+catch
+//100 millisecounds
+
+implement runnable 
+
